@@ -21,8 +21,10 @@ else
         CONTAINER="$(php_container_exists)"
 
         if [ -n "$(php_container_running ${CONTAINER})" ]; then
+
             echo "Project already running!"
             read -p "Would you like to stop the containers? [Y/n]: " ANSWER
+
             if [ "${ANSWER}" == "n" ]; then
                 exit
             fi
