@@ -4,16 +4,16 @@ DOCKER_COMPOSE_FILE="/var/www/${1}/docker-compose.yml"
 PROJECT_ROOT="/var/www/${1}"
 
 php_container_exists() {
-  echo "$(cd ${PROJECT_ROOT} && docker-compose -f ${DOCKER_COMPOSE_FILE} ps php 2> /dev/null | grep _php_ | awk '{ print $1 }')"
+    echo "$(cd ${PROJECT_ROOT} && docker-compose -f ${DOCKER_COMPOSE_FILE} ps php 2> /dev/null | grep _php_ | awk '{ print $1 }')"
 }
 
 php_container_running() {
-  local CONTAINER="${1}"
+    local CONTAINER="${1}"
 
-  echo "$(docker exec ${CONTAINER} date 2> /dev/null)"
+    echo "$(docker exec ${CONTAINER} date 2> /dev/null)"
 }
 
-if [ -z ${1} ] ; then
+if [ -z "${1}" ] ; then
     echo 'Enter project to start'
 else
     if [ -f "${DOCKER_COMPOSE_FILE}" ]; then
